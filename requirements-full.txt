@@ -1,0 +1,24 @@
+# Full requirements including training and visualization
+# Install with: pip install -r requirements-full.txt
+
+# Core dependencies
+rdkit>=2022.9.1
+datamol>=0.8.0
+numpy>=1.21.0
+loguru>=0.6.0
+
+# Training and ML dependencies
+tqdm
+typer
+universal_pathlib
+torch>=2.0
+transformers
+datasets
+tokenizers
+accelerate
+evaluate
+wandb
+huggingface-hub
+
+# Visualization and utilities
+networkx

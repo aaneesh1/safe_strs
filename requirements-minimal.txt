@@ -1,0 +1,8 @@
+# Minimal requirements for SMILES to SAFE conversion
+# Install with: pip install -r requirements-minimal.txt
+
+# Core dependencies
+rdkit>=2022.9.1
+datamol>=0.8.0
+numpy>=1.21.0
+loguru>=0.6.0
