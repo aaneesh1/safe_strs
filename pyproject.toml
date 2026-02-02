@@ -24,19 +24,26 @@ classifiers = [
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.9",
-    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
 ]
 
 keywords = ["safe", "smiles", "de novo", "design", "molecules"]
 dependencies = [
-    "tqdm",
     "loguru",
-    "typer",
-    "universal_pathlib",
     "datamol",
     "numpy",
+    "rdkit"
+]
+
+[project.optional-dependencies]
+# Optional dependencies for model training and generation (requires transformers)
+training = [
+    "tqdm",
+    "typer",
+    "universal_pathlib",
     "torch>=2.0",
     "transformers",
     "datasets",
@@ -45,10 +52,12 @@ dependencies = [
     "evaluate",
     "wandb",
     "huggingface-hub",
-    "rdkit"
+    "networkx",
 ]
-
-[project.optional-dependencies]
+# Optional visualization dependencies
+viz = [
+    "networkx",
+]
 docs = [
     "mkdocsi <= 1.6.0",
     "mkdocs-material>=7.1.1",
@@ -67,8 +76,10 @@ docs = [
 Documentation = "https://safe-docs.datamol.io/"
 
 
-[project.scripts]
-safe-train = "safe.trainer.cli:main"
+# Training CLI moved to optional dependencies
+# Install with: pip install safe-mol[training]
+# [project.scripts]
+# safe-train = "safe.trainer.cli:main"
 
 [tool.setuptools]
 include-package-data = true
@@ -86,7 +97,7 @@ namespaces = true
 
 [tool.black]
 line-length = 100
-target-version = ['py310', 'py311']
+target-version = ['py310', 'py311', 'py312', 'py313']
 include = '\.pyi?$'
 
 [tool.pytest.ini_options]
